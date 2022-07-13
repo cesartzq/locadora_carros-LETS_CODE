@@ -1,13 +1,14 @@
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Aplicacao {
 
     public static void main(String[] args) {
 
-        Veiculo fuscao = new Carro("Volks","Fuscao");
-        Veiculo lamborghini = new Carro("Lamborghini","Aventator");
-        Veiculo onibus = new Onibus("Mercedes", "Busao");
-        Veiculo tesla = new Carro("Tesla","XYZ");
+        Veiculo fuscao = new Carro("Volks","Fuscao", BigDecimal.valueOf(15_000), 1980);
+        Veiculo lamborghini = new Carro("Lamborghini","Aventator", BigDecimal.valueOf(250_000), 2010);
+        Veiculo onibus = new Onibus("Mercedes", "Busao", BigDecimal.valueOf(150_000), 2005);
+        Veiculo tesla = new Carro("Tesla","XYZ", BigDecimal.valueOf(200_000), 2015);
 
         final Object novoFusca = fuscao.clone();
 
@@ -22,8 +23,8 @@ public class Aplicacao {
         System.out.println(disponiveis);
         System.out.println(disponiveis.size());
 
-        locacao.incluirVeiculo(new Bicicleta("Caloi", "Ceci"));
-        locacao.incluirVeiculo(new Bicicleta("Caloi", "Ceci"));
+        locacao.incluirVeiculo(new Bicicleta("Caloi", "Ceci", BigDecimal.valueOf(2_500), 2007));
+        locacao.incluirVeiculo(new Bicicleta("Caloi", "Ceci", BigDecimal.valueOf(1_500), 2009));
 
         System.out.println(disponiveis);
         System.out.println(disponiveis.size());
@@ -37,6 +38,12 @@ public class Aplicacao {
 
         final List<Veiculo> ordenadoPorModelo = locacao.retornaOrdenadoModelo();
         System.out.println("Ordenado por Modelo" + ordenadoPorModelo);
+
+        final List<Veiculo> ordenadoPorPreco = locacao.retornaOrdenadoPreco();
+        System.out.println("Ordenado por Preço" + ordenadoPorPreco);
+
+        final List<Veiculo> ordenadoPorAno = locacao.retornaOrdenadoAno();
+        System.out.println("Ordenado por Ano" + ordenadoPorAno);
 
 //        Scanner scanner = new Scanner(System.in);
 //

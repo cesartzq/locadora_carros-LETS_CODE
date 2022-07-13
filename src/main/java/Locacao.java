@@ -48,12 +48,12 @@ public class Locacao {
     }
 
     public List<Veiculo> retornaOrdenadoPreco() {
-        Collections.sort(veiculos, (Comparator<Veiculo>) (v1, v2) -> v1.getPreco().compareTo(v2.getPreco()));
+        veiculos.sort((v1, v2) -> v1.getPreco().compareTo(v2.getPreco()));
         return veiculos;
     }
 
     public List<Veiculo> retornaOrdenadoAno() {
-        Collections.sort(veiculos, new Comparator<Veiculo>() {
+        veiculos.sort(new Comparator<Veiculo>() {
             @Override
             public int compare(Veiculo o1, Veiculo o2) {
                 return Integer.compare(o1.getAno(), o2.getAno());
