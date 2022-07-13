@@ -1,10 +1,6 @@
 import exceptions.ParametroNaoInformadoException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 import static java.lang.String.format;
 import static validacoes.ValidacaoVeiculo.validaListaVeiculos;
@@ -48,6 +44,22 @@ public class Locacao {
                 return o1.getModelo().compareTo(o2.getModelo());
             }
         });
+        return veiculos;
+    }
+
+    public List<Veiculo> retornaOrdenadoPreco() {
+        Collections.sort(veiculos, (Comparator<Veiculo>) (v1, v2) -> v1.getPreco().compareTo(v2.getPreco()));
+        return veiculos;
+    }
+
+    public List<Veiculo> retornaOrdenadoAno() {
+        Collections.sort(veiculos, new Comparator<Veiculo>() {
+            @Override
+            public int compare(Veiculo o1, Veiculo o2) {
+                return Integer.compare(o1.getAno(), o2.getAno());
+            }
+        });
+
         return veiculos;
     }
 
