@@ -15,8 +15,8 @@ public class Locacao {
 
     private final ValidacaoVeiculo validacaoVeiculo;
 
-    public Locacao(Comparator comparator, ValidacaoVeiculo validacaoVeiculo) {
-        this.veiculos = new TreeSet<>(comparator);
+    public Locacao(Comparator<Veiculo> comparator, ValidacaoVeiculo validacaoVeiculo) {
+        this.veiculos = new TreeSet<Veiculo>(comparator);
         this.validacaoVeiculo = validacaoVeiculo;
     }
 

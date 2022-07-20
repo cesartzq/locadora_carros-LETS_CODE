@@ -56,7 +56,6 @@ public class Aplicacao {
 
         System.out.println(lamborghini.getSimilares());
 
-        final Collection naoOrdenado = locacao.disponiveis();
         final ClienteDao clienteDao = new ClienteDao();
         final Cliente joao = new Cliente("Joao", "joao@gmail.com");
         clienteDao.salvar(joao);
