@@ -1,4 +1,6 @@
 import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 public class Aplicacao {
@@ -15,35 +17,44 @@ public class Aplicacao {
         System.out.println(" fusca normal: " + fuscao);
         System.out.println("Novo fusca: " + novoFusca);
 
-        Locacao locacao = new Locacao(fuscao,
-                lamborghini,onibus,tesla);
+        Comparator<Veiculo> comparaMarcaModeloPreco =
+                Comparator
+                        .comparing(Veiculo::getMarca)
+                        .thenComparing(Veiculo::getModelo)
+                        .thenComparing(Veiculo::getPreco, Comparator.nullsLast(Comparator.naturalOrder()));
 
-        final List disponiveis = locacao.disponiveis();
+        Locacao locacao = new Locacao(comparaMarcaModeloPreco, fuscao,
+                lamborghini, onibus, tesla);
+
+        final Collection disponiveis = locacao.disponiveis();
 
         System.out.println(disponiveis);
         System.out.println(disponiveis.size());
 
-        locacao.incluirVeiculo(new Bicicleta("Caloi", "Ceci", BigDecimal.valueOf(2_500), 2007));
-        locacao.incluirVeiculo(new Bicicleta("Caloi", "Ceci", BigDecimal.valueOf(1_500), 2009));
+        locacao.incluirVeiculo(new Bicicleta("Caloi", "Ceci"));
+        locacao.incluirVeiculo(new Bicicleta("Caloi", "Ceci"));
 
         System.out.println(disponiveis);
         System.out.println(disponiveis.size());
 
-        final List naoOrdenado = locacao.disponiveis();
+        final Collection naoOrdenado = locacao.disponiveis();
 
         System.out.println("Nao Ordenada" + naoOrdenado);
 
-        final List<Veiculo> ordenadoPorMarca = locacao.retornaOrdenadoMarca();
-        System.out.println("Ordenado por Marca" + ordenadoPorMarca);
+        // Comparator serve para comparar cada elemento de uma lista (pode ter múltiplas implementações)
+        // Comparable com compareTo seria utilizado para comparar objeto (único)
 
-        final List<Veiculo> ordenadoPorModelo = locacao.retornaOrdenadoModelo();
-        System.out.println("Ordenado por Modelo" + ordenadoPorModelo);
-
-        final List<Veiculo> ordenadoPorPreco = locacao.retornaOrdenadoPreco();
-        System.out.println("Ordenado por Preço" + ordenadoPorPreco);
-
-        final List<Veiculo> ordenadoPorAno = locacao.retornaOrdenadoAno();
-        System.out.println("Ordenado por Ano" + ordenadoPorAno);
+//        final List<Veiculo> ordenadoPorMarca = locacao.retornaOrdenadoMarca();
+//        System.out.println("Ordenado por Marca" + ordenadoPorMarca);
+//
+//        final List<Veiculo> ordenadoPorModelo = locacao.retornaOrdenadoModelo();
+//        System.out.println("Ordenado por Modelo" + ordenadoPorModelo);
+//
+//        final List<Veiculo> ordenadoPorPreco = locacao.retornaOrdenadoPreco();
+//        System.out.println("Ordenado por Preço" + ordenadoPorPreco);
+//
+//        final List<Veiculo> ordenadoPorAno = locacao.retornaOrdenadoAnoDecrescente();
+//        System.out.println("Ordenado por Ano" + ordenadoPorAno);
 
 //        Scanner scanner = new Scanner(System.in);
 //
