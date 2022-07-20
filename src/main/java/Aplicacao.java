@@ -42,7 +42,7 @@ public class Aplicacao {
 
         final Collection disponiveis = locacao.disponiveis();
         locacao.incluirVeiculo(bike);
-        locacao.incluirVeiculo(onibusVeio);
+        // locacao.incluirVeiculo(onibusVeio); // Retorna erro
         locacao.incluirVeiculo(fuscao);
         locacao.incluirVeiculo(fuscao);
         locacao.incluirVeiculo(lamborghini);
