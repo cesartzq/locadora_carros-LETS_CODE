@@ -1,3 +1,7 @@
+package comparators;
+
+import domains.Veiculo;
+
 import java.util.Comparator;
 
 public class MarcaComparator implements Comparator<Veiculo> {

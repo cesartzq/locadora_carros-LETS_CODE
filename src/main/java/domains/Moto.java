@@ -1,3 +1,5 @@
+package domains;
+
 import java.math.BigDecimal;
 
 public class Moto extends Veiculo {
